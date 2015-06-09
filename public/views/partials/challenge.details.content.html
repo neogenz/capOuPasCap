@@ -1,0 +1,79 @@
+<div class="row">
+    <div class="col-md-12 col-xs-12 text-center">
+        <div ng-switch="iHaveDoneThisChallenge(challenge)" class="inline">
+            <div ng-switch-when="false" class="inline">
+                <form class="inline" enctype="multipart/form-data">
+                    <input upload-picture="picture" name="picture" type="file"
+                           class="filestyle display-none"
+                           data-input="false" id="filestyle-0" tabindex="-1"
+                           style="position: absolute; clip: rect(0px 0px 0px 0px);">
+
+                    <div class="bootstrap-filestyle input-group inline">
+                        <span class="group-span-filestyle " tabindex="0">
+                            <label for="filestyle-0">
+                                <span class="font-size-h2 cursor link-color-inverse fa fa-square-o"
+                                      ng-click="doneListener(challenge)">
+                                </span>
+                            </label>
+                        </span>
+                    </div>
+                </form>
+            </div>
+            <div ng-switch-default class="inline">
+                <a class="link-no-decoration disabled-link link-color-inverse">
+                    <span class="font-size-h2 fa fa-check-square-o cursor">
+                    </span>
+                </a>
+            </div>
+        </div>
+        <a class="medium-left-separation link-no-decoration small-left-separation"
+           ng-click="getCommentsByChallengeListener(challenge)">
+            <span class="font-size-h2 fa fa-comments cursor link-color-inverse">
+            </span>
+        </a>
+        <a class="medium-left-separation link-no-decoration link-color-inverse" ng-class="{true: 'disabled-link'}[iLikeThisChallenge(challenge)]"
+           ng-click="likeListener(challenge)">
+            <span class="font-size-h2 cursor"
+                  ng-class="{true: 'fa fa-thumbs-up', false: 'fa fa-thumbs-o-up'}[iLikeThisChallenge(challenge)]">
+            </span>
+        </a>
+        <a class="medium-left-separation link-no-decoration link-color-inverse"
+           ng-click="refreshBookmarkClickListener(challenge)">
+            <span class="font-size-h2 cursor"
+                  ng-class="{true: 'fa fa-star', false: 'fa fa-star-o'}[iHaveBookmarkOnThisChallenge(challenge)]">
+            </span>
+        </a>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12 col-xs-12 no-margin-bottom">
+        <table class="table no-margin-bottom">
+            <tbody>
+            <tr>
+                <td class="col-md-1 col-xs-2">
+                    <h5><i class="fa fa-user"></i></h5>
+                </td>
+                <td><h5>{{challenge.user.email}}</h5></td>
+            </tr>
+            <tr>
+                <td>
+                    <h5><i class="glyphicon glyphicon-time"></i></h5>
+                </td>
+                <td><h5>{{challenge.createdAt | date:'dd-MM-yyyy HH:mm:ss'}}</h5></td>
+            </tr>
+            </tbody>
+        </table>
+        <table class="table no-margin-bottom">
+            <tbody>
+            <tr>
+                <td class="col-md-6 col-xs-12">
+                    <h5><strong>Consigne du défis :</strong></h5>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-12 col-xs-12 standard-margin-bottom text-center">
+        <p class="no-margin-bottom">{{challenge.text}}</p>
+    </div>
+</div>

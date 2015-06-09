@@ -1,0 +1,15 @@
+<div class="jumbotron text-center">
+    <h1><span class="fa fa-gamepad color-pink"></span></h1>
+
+    <h1>Cap ou pas cap,</h1>
+
+    <h1>
+        <small>lancez vous des défis !</small>
+    </h1>
+    <p ng-if="!$root.user">Connectez-vous ou enregistrez-vous: </p>
+
+    <a ng-if="!$root.user" ui-sref="signin" class="btn btn-primary btn-lg margin-bottom-10"><span
+            class="fa fa-sign-in"></span> Connexion</a>
+    <a ng-if="!$root.user" ui-sref="signup" class="btn btn-info btn-lg margin-bottom-10"><span
+            class="fa fa-user-plus"></span> Inscription</a>
+</div>

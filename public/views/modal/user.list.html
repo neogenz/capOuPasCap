@@ -1,0 +1,49 @@
+<div class="centered panel panel-default without-margin">
+    <div class="panel-heading">
+        <div class="row">
+            <div class="col-md-2 col-xs-3 text-left">
+                <h3 ng-if="seeUserDetails" class="color-white">
+                    <span class="fa fa-arrow-left cursor"
+                          ng-click="seeUsersListListener()"></span>
+                </h3>
+            </div>
+            <div class="col-md-8 col-xs-6 text-center">
+                <div ng-switch="seeUserDetails">
+                    <div ng-switch-when="true">
+                        <h3 class="color-white">
+                            <span class="fa fa-user"></span>
+                        </h3>
+                    </div>
+                    <div ng-switch-default>
+                        <h3 class="color-white"><span ng-if="!seeUserDetails" class="fa fa-users"></span></h3>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-12 col-xs-12 text-center">
+                <h3 class="color-white">
+                    <small>
+                        <div ng-switch="userDetails.user.name === ''">
+                            <div ng-switch-when="true">
+                                <span>{{userDetails.user.email}}</span>
+                            </div>
+                            <div ng-switch-default>
+                                <span>{{userDetails.user.email}}</span>
+                            </div>
+                        </div>
+                    </small>
+                </h3>
+            </div>
+        </div>
+    </div>
+    <div class="panel-body scrollable" ng-style="$root.style.maxHeightModal">
+        <div ng-if="!seeUserDetails" ng-repeat="user in users | orderBy:'-createdAt' ">
+            <div class="col-sm-12">
+                <div ng-include="'views/partials/user.preview'"></div>
+            </div>
+        </div>
+        <div ng-if="seeUserDetails" ng-include="'views/partials/user.details'"></div>
+    </div>
+    <div class="panel-footer text-right">
+        <button class="btn btn-warning" ng-click="close()">Fermer</button>
+    </div>
+</div>

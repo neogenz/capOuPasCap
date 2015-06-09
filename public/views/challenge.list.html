@@ -1,0 +1,45 @@
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h1 ng-show="nbChallengesNotHide === 0">Aucun
+            <small>défis</small>
+        </h1>
+
+        <h1 ng-show="nbChallengesNotHide === 1">Dernier
+            <small>défis</small>
+        </h1>
+
+        <h1 ng-show="nbChallengesNotHide > 1">{{nbChallengesNotHide}} derniers
+            <small>défis</small>
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-offset-2 col-md-8 col-xs-12 text-center margin-bottom-15">
+        <button class="btn btn-lg btn-info" ng-click="addClickListener()">
+            Nouveau défis
+        </button>
+    </div>
+    <div class="col-md-2 col-xs-12 text-center margin-bottom-15">
+        <div ng-include="'views/partials/button.filter'"></div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div ng-repeat="challenge in challenges | orderBy:'-createdAt'"
+             ng-if="(!challenge.isHidden || challenge.user.id === $root.user.id)"
+             ng-show="challengesFilter.selected === challengesFilter.createdAt">
+            <div class="col-md-4 col-xs-12"
+                 ng-show="!challenge.isHidden && !($root.user.hideDoneChallenge && iHaveDoneThisChallenge(challenge))">
+                <div ng-include="'/views/partials/challenge.preview'"></div>
+            </div>
+        </div>
+        <div ng-repeat="challenge in challenges | orderBy:'-likes.length'"
+             ng-if="(!challenge.isHidden || challenge.user.id === $root.user.id)"
+             ng-show="challengesFilter.selected === challengesFilter.like">
+            <div class="col-md-4 col-xs-12"
+                 ng-show="!challenge.isHidden && !($root.user.hideDoneChallenge && iHaveDoneThisChallenge(challenge))">
+                <div ng-include="'/views/partials/challenge.preview'"></div>
+            </div>
+        </div>
+    </div>
+</div>

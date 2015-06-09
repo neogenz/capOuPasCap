@@ -1,0 +1,16 @@
+{
+  "name": "CapOuPasCap",
+  "author": "Maxime De Sogus",
+  "dependencies": {
+    "body-parser": "latest",
+    "express": "latest",
+    "morgan": "latest",
+    "mysql": "latest",
+    "sequelize": "latest",
+    "bcrypt-nodejs": "latest",
+    "jsonwebtoken": "latest",
+    "promise": "latest",
+    "multer": "latest",
+    "cors": "latest"
+  }
+}

@@ -1,0 +1,21 @@
+<div class="centered panel panel-default without-margin">
+    <div class="panel-heading">
+        <h2 class="color-white text-center no-margin"><span class="fa fa-bookmark"></span></h2>
+    </div>
+    <div class="panel-body scrollable" ng-style="$root.style.maxHeightModal">
+        <div class="row">
+            <div class="col-xs-12 col-md-12">
+                <div class="row" ng-repeat="challenge in me.bookmarks"
+                     ng-if="!challenge.isHidden || challenge.user.id === $root.user.id">
+                    <div class="col-xs-12 col-md-12">
+                        <div ng-include="'views/partials/me.challenge.preview'"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer text-right">
+        <button class="btn btn-warning" ng-click="close()">Fermer</button>
+    </div>
+</div>

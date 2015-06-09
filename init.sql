@@ -1,0 +1,2 @@
+CREATE DATABASE cap_ou_pas_cap;
+CREATE USER 'root' IDENTIFIED BY '';

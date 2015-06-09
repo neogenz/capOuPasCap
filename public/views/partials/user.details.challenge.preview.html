@@ -1,0 +1,23 @@
+<div class="panel panel-default">
+    <div class="panel-body text-center cursor" ui-sref="challengeDetails({id:challenge.id})" ng-click="close()">
+        <div class="row"
+             ng-show="userDetails.challengesFilterSelected != userDetails.challengesFilterOptions.done.value">
+            <div class="col-md-12">
+                <p><strong>{{challenge.text}}</strong></p>
+            </div>
+        </div>
+        <div ng-show="userDetails.challengesFilterSelected == userDetails.challengesFilterOptions.done.value">
+            <div class="row vertical-align">
+                <div class="col-md-9 col-xs-8">
+                    <p><strong>{{challenge.text}}</strong></p>
+                </div>
+                <div class="col-md-3 col-xs-4">
+                    <img src="{{challenge.states[0].picturePublicPath}}" class="img img-thumbnail small-picture-size">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        Date de création : {{challenge.createdAt | date:'dd-MM-yyyy HH:mm:ss'}}
+    </div>
+</div>

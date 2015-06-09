@@ -1,0 +1,52 @@
+<div class="row">
+    <div class="col-md-12 col-xs-12">
+        <table class="table">
+            <tbody>
+            <tr>
+                <td class="col-md-1 col-xs-2"><strong>Email</strong></td>
+                <td><a class="link-color-inverse"
+                       href="mailto:{{ userDetails.user.email}}">{{userDetails.user.email}}</a></td>
+            </tr>
+            <tr>
+                <td><strong>Nom</strong></td>
+                <td>{{ userDetails.user.lastName }}</td>
+            </tr>
+            <tr>
+                <td><strong>Prénom</strong></td>
+                <td>{{ userDetails.user.firstName }}</td>
+            </tr>
+            <tr>
+                <td><strong>Défis</strong></td>
+                <td>
+                    <select class="dropdown dropdown-header"
+                            ng-model="userDetails.challengesFilterSelected">
+                        <option ng-repeat="option in userDetails.challengesFilterOptions" class="dropdown"
+                                ng-value="option.value">
+                            {{option.text}}
+                        </option>
+                    </select>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-xs-12 col-md-12">
+        <div ng-switch="userDetails.challengesFilterSelected">
+            <div ng-repeat="challenge in userDetails.challenges.done"
+                 ng-show="userDetails.challengesFilterSelected == userDetails.challengesFilterOptions.done.value">
+                <div ng-include="'views/partials/user.details.challenge.preview'"></div>
+            </div>
+            <div ng-repeat="challenge in userDetails.challenges.posted"
+                 ng-show="userDetails.challengesFilterSelected == userDetails.challengesFilterOptions.posted.value">
+                <div ng-include="'views/partials/user.details.challenge.preview'"></div>
+            </div>
+            <div ng-repeat="challenge in userDetails.challenges.all"
+                 ng-show="userDetails.challengesFilterSelected == userDetails.challengesFilterOptions.all.value">
+                <div ng-include="'views/partials/user.details.challenge.preview'"></div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,16 @@
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h1>Mes défis
+            <small>favoris</small>
+        </h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <div ng-repeat="challenge in me.bookmarks | orderBy:'-createdAt'">
+            <div class="col-md-4">
+                <div ng-include src="'/views/partials/challenge.preview'"></div>
+            </div>
+        </div>
+    </div>
+</div>

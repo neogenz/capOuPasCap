@@ -1,0 +1,171 @@
+<!doctype html>
+<title>Cap ou pas cap</title>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="snap.css">
+    <link rel="stylesheet" href="angular-snap.min.css">
+    <link rel="stylesheet" href="font-awesome.min.css">
+    <link rel="stylesheet" href="angular-toastr.min.css">
+    <link rel="stylesheet" href="loader/loading-bar.css">
+    <link rel="stylesheet" href="custom.css">
+</head>
+
+<body ng-app="appCapOuPasCap">
+
+<snap-drawer class="background-color-blue-3 color-white text-center">
+    <div class="row">
+        <div class="col-xs-12 col-md-12 text-center cursor" ng-show="$root.user">
+            <a ui-sref="challenges">
+                <h2 class="color-white snap-menu-icon"><span class="fa fa-gamepad margin-bottom-10" snap-close></span></h2>
+            </a>
+        </div>
+        <div class="col-xs-12 col-md-12 text-center snap-menu-div cursor" ng-show="$root.user">
+            <a ui-sref="bookmarks">
+                <h2 class="color-white snap-menu-icon"><span class="fa fa-bookmark margin-bottom-10" snap-close></span></h2>
+            </a>
+        </div>
+        <div class="col-xs-12 col-md-12 text-center snap-menu-div cursor" ng-show="$root.user">
+            <a ng-controller="menu.ctrl" ng-click="openUsersListModalListener()">
+                <h2 class="color-white snap-menu-icon"><span class="fa fa-users margin-bottom-10" snap-close></span></h2>
+            </a>
+        </div>
+        <div class="col-xs-12 col-md-12 text-center snap-menu-div cursor" ng-show="$root.user">
+            <a ui-sref="me" snap-close class="link-no-decoration">
+                <h2 class="color-white no-margin-bottom"><span class="fa fa-user margin-bottom-10" snap-close></span></h2>
+                <h5 class="no-margin"><small class="color-white">
+            {{$root.user.email}}
+                </small>
+                </h5>
+            </a>
+        </div>
+        <div class="col-xs-12 col-md-12 text-center snap-menu-div cursor bottom fixed-bottom" ng-show="$root.user">
+            <a ng-controller="signout.ctrl" ng-click="logout()" class="link-no-decoration">
+                <h2 class="color-white no-margin-bottom"><span class="fa fa-sign-out margin-bottom-10" snap-close></span></h2>
+            </a>
+        </div>
+
+    </div>
+</snap-drawer>
+
+<snap-content snap-options="$root.snapOpts" id="snap-content">
+    <nav role="navigation" class="navbar background-color-blue-3 navbar-inverse">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header background-color-blue-3">
+                <button type="button" class="navbar-toggle float-left" snap-toggle="left">
+                    <span class="sr-only">Navigation mobile</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#/" class="navbar-brand"><span class="fa fa-gamepad"></span>
+                    <strong class="small-left-separation">C</strong><small>ap</small><strong>O</strong><small>u</small><strong>P</strong><small>as</small><strong>C</strong><small>ap</small></a>
+            </div>
+            <!-- Collection of nav links, forms, and other content for toggling -->
+            <div id="menu" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li ng-show="$root.user">
+                        <a ui-sref="challenges">
+                            <span class="fa fa-gamepad"></span>
+                        </a>
+                    </li>
+                    <li ng-show="$root.user">
+                        <a ui-sref="bookmarks">
+                            <span class="fa fa-bookmark"></span>
+                        </a>
+                    </li>
+                    <li ng-show="$root.user">
+                        <a ng-controller="menu.ctrl" ng-click="openUsersListModalListener()">
+                            <span class="fa fa-users"></span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li ng-show="$root.user">
+                        <a ui-sref="me">
+                            {{$root.user.email}}
+                        </a>
+                    </li>
+                    <li ng-show="$root.user" class="pull-right">
+                        <a ng-controller="signout.ctrl" ng-click="logout()">
+                            <span class="fa fa-sign-out"></span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container">
+        <div ui-view></div>
+    </div>
+</snap-content>
+
+
+<script src="vendor/jquery-1.11.1.min.js"></script>
+<script src="vendor/bootstrap.min.js"></script>
+<script src="vendor/snap.min.js"></script>
+<script src="angular/angular.min.js"></script>
+<script src="angular/vendor/angular-animate.min.js"></script>
+<script src="angular/vendor/ui-router.min.js"></script>
+<script src="angular/vendor/ui-bootstrap-tpls-0.12.1.min.js"></script>
+<script src="angular/vendor/loading-bar.js"></script>
+<script src="angular/vendor/ngStorage.js"></script>
+<script src="angular/vendor/angular.snap.min.js"></script>
+<script src="angular/vendor/angular-toastr.min.js"></script>
+
+<script src="app/app_start.js"></script>
+<script src="app/__global.js"></script>
+<script src="app/config.js"></script>
+
+<script src="app_utils/httpRequestOptions.builder.js"></script>
+<script src="app_utils/array.operations.js"></script>
+
+<script src="app/DATA/resources/user.details.challenges.filter.options.js"></script>
+<script src="app/DATA/resources/ui.messages.js"></script>
+
+<script src="app/DTO/factory.js"></script>
+<script src="app/DTO/Like.js"></script>
+<script src="app/DTO/User.js"></script>
+<script src="app/DTO/Bookmark.js"></script>
+<script src="app/DTO/Comment.js"></script>
+<script src="app/DTO/CommentIncludeUser.js"></script>
+<script src="app/DTO/State.js"></script>
+<script src="app/DTO/Challenge.js"></script>
+<script src="app/DTO/ChallengeLight.js"></script>
+
+<script src="app/appCapOuPasCap.js"></script>
+
+<script src="app/03_DAL/webApi/challenge.js"></script>
+<script src="app/03_DAL/webApi/user.js"></script>
+
+<script src="app/routing.js"></script>
+<script src="app/AUTH/webApi/authenticate.js"></script>
+
+<script src="app/02_BLL/directive/uploadPicture.js"></script>
+<script src="app/02_BLL/challenge.array.operations.js"></script>
+<script src="app/02_BLL/bookmarkFactory.js"></script>
+<script src="app/02_BLL/challengeFactory.js"></script>
+
+<script src="app/01_CTRL/menu.ctrl.js"></script>
+<script src="app/01_CTRL/home.ctrl.js"></script>
+<script src="app/01_CTRL/signup.ctrl.js"></script>
+<script src="app/01_CTRL/signin.ctrl.js"></script>
+<script src="app/01_CTRL/signout.ctrl.js"></script>
+<script src="app/01_CTRL/comment.list.ctrl.js"></script>
+<script src="app/01_CTRL/challenge.ctrl.js"></script>
+<script src="app/01_CTRL/challenge.add.ctrl.js"></script>
+<script src="app/01_CTRL/challenge.details.ctrl.js"></script>
+<script src="app/01_CTRL/user.list.ctrl.js"></script>
+<script src="app/01_CTRL/me.details.ctrl.js"></script>
+<script src="app/01_CTRL/me.details.edit.ctrl.js"></script>
+<script src="app/01_CTRL/me.details.edit.password.ctrl.js"></script>
+<script src="app/01_CTRL/me.bookmark.ctrl.js"></script>
+<script src="app/01_CTRL/action.confirm.ctrl.js"></script>
+
+
+</body>
+</html>

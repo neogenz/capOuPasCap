@@ -1,0 +1,82 @@
+<div class="panel panel-default">
+    <div class="panel-heading text-center background-color-blue-2">
+        <a class="link-no-decoration" ng-click="inverseHideChallengeStateClickListener(challenge)"
+           ng-if="$root.user.id === challenge.user.id && challengeCanBeHide(challenge)">
+            <h5 class="inline link-color">
+            <span class="cursor"
+                  ng-class="{false: 'fa fa-eye-slash', true: 'fa fa-eye'}[challenge.isHidden]">
+            </span>
+            </h5>
+        </a>
+        <a class="link-no-decoration" ng-click="removeClickListener(challenge)"
+           ng-if="$root.user.id === challenge.user.id && challengeIsDeletable(challenge)">
+            <h5 class="inline link-color">
+            <span class="cursor fa fa-trash">
+            </span>
+            </h5>
+        </a>
+        <a class="link-no-decoration small-left-separation" ng-click="getCommentsByChallengeListener(challenge)">
+            <h5 class="inline link-color">
+            <span class="fa fa-comments cursor">
+            </span>
+            </h5>
+        </a>
+
+        <h5 class="inline">
+            <small>{{challenge.comments.length}}</small>
+        </h5>
+        <a class="link-no-decoration" ng-click="likeListener(challenge)" ng-class="{true: 'disabled-link'}[iLikeThisChallenge(challenge)]">
+            <h5 class="inline link-color">
+            <span class="cursor"
+                  ng-class="{true: 'fa fa-thumbs-up', false: 'fa fa-thumbs-o-up'}[iLikeThisChallenge(challenge)]">
+            </span>
+            </h5>
+        </a>
+
+        <h5 class="inline">
+            <small>{{challenge.likes.length}}</small>
+        </h5>
+        <a class="link-no-decoration" ng-click="refreshBookmarkClickListener(challenge)">
+            <h5 class="inline link-color">
+            <span class="cursor"
+                  ng-class="{true: 'fa fa-star', false: 'fa fa-star-o'}[thisChallengeItsBookmark(challenge)]">
+            </span>
+            </h5>
+        </a>
+    </div>
+    <div class="panel-body text-center cursor" ui-sref="challengeDetails({id:challenge.id})">
+        <div class="row"
+             ng-show="me.challengesFilterSelected != me.challengesFilterMapping.done">
+            <div class="col-md-12">
+                <p><strong>{{challenge.text}}</strong></p>
+            </div>
+        </div>
+        <div ng-show="me.challengesFilterSelected == me.challengesFilterMapping.done">
+            <div class="row vertical-align">
+                <div class="col-md-9 col-xs-8">
+                    <p><strong>{{challenge.text}}</strong></p>
+                </div>
+                <div class="col-md-3 col-xs-4">
+                    <img src="{{challenge.states[0].picturePublicPath}}" class="img img-thumbnail small-picture-size">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-12 text-left">
+                <span class="fa fa-user"></span><strong class="small-left-separation">{{challenge.user.email}}</strong>
+            </div>
+            <div class="col-md-6 col-sm-6 text-right hidden-xs">
+                <strong>{{challenge.createdAt | date:'dd-MM-yyyy HH:mm:ss'}}</strong><span
+                    class=" small-left-separation glyphicon glyphicon-time"></span>
+            </div>
+            <div class="col-xs-12 text-left visible-xs hidden-lg hidden-sm hidden-md">
+                <span class="glyphicon glyphicon-time"></span><strong class="small-left-separation">{{challenge.createdAt
+                | date:'dd-MM-yyyy HH:mm:ss'}}</strong>
+            </div>
+        </div>
+
+
+    </div>
+</div>

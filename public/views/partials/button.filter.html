@@ -1,0 +1,28 @@
+<div class="btn-group">
+    <button class="btn btn-default btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+        <span class="fa fa-filter color-pink small-right-separation"></span>
+
+        <p class="no-margin inline">:</p>
+        <h5 class="inline" ng-show="$parent.challengesFilter.selected === $parent.challengesFilter.like"><i class="fa fa-thumbs-up"></i></h5>
+        <h5 class="inline" ng-show="$parent.challengesFilter.selected === $parent.challengesFilter.createdAt"><i class="fa fa-history"></i></h5>
+    </button>
+    <ul class="dropdown-menu" role="menu">
+        <li>
+            <form role="form" name="principalFilterForm">
+                <div class="row no-margin">
+                    <div class="col-md-12 col-xs-12">
+                        <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" ng-model="$parent.challengesFilter.selected" id="createdAtFilter" ng-value="challengesFilter.createdAt" ng-change="actualizeFilter()"> Date de
+                        création
+                        </label>
+                    </div>
+                    <div class="col-md-12 col-xs-12">
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" ng-model="$parent.challengesFilter.selected" id="likeFilter" ng-value="challengesFilter.like" ng-change="actualizeFilter()"> J'aime
+                        </label>
+                    </div>
+                </div>
+            </form>
+        </li>
+    </ul>
+</div>

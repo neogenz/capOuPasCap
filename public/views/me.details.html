@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-md-12 text-center">
+        <h1>Mon profil</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="color-white text-center no-margin"><span class="fa fa-user"></span></h2>
+            </div>
+            <div class="panel-body scrollable">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12">
+                        <table class="table no-margin-bottom">
+                            <tbody>
+                            <tr>
+                                <td class="col-md-1 col-xs-2"><strong>Email</strong></td>
+                                <td><a class="link-color-inverse"
+                                       href="mailto:{{ $root.user.email}}">{{$root.user.email}}</a></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Nom</strong></td>
+                                <td>{{ $root.user.lastName }}</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prénom</strong></td>
+                                <td>{{ $root.user.firstName }}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 text-center margin-bottom-10">
+                        <form role="form" name="hideDoneChallengeForm">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="user.hideDoneChallenge" ng-change="inverseHideDoneChallengeStateListener()"> Cacher les défis réalisé
+                                </label>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="col-md-12 col-xs-12 text-center margin-bottom-10">
+                        <button class="btn btn-info" ng-click="editMyProfileClickListener()">
+                            <span class="fa fa-pencil small-right-separation"></span>Modifier mes informations
+                        </button>
+                    </div>
+                    <div class="col-md-12 col-xs-12 text-center">
+                        <button class="btn btn-info" ng-click="editMyPasswordClickListener()">
+                            <span class="fa fa-key small-right-separation"></span>Modifier mon mot de passe
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-8 col-xs-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h2 class="color-white text-center no-margin"><span class="fa fa-gamepad"></span></h2>
+            </div>
+            <div class="panel-body scrollable">
+                <div class="row">
+                    <div class="col-md-12 col-xs-12 standard-margin-bottom">
+                        <form>
+                            <div class="form-group">
+                                <label for="challengesFilter" class="col-md-1 col-xs-2">
+                                    <span class="fa fa-filter color-pink"></span>
+                                </label>
+                                <select id="challengesFilter" class="dropdown dropdown-header col-md-11 col-xs-10"
+                                        ng-model="me.challengesFilterSelected"
+                                        ng-options="option.value as option.text for option in me.challengesFilterOptions">
+                                </select>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12 col-md-12">
+                        <div class="row" ng-repeat="challenge in me.challenges">
+                            <div class="col-xs-12 col-md-12">
+                                <div ng-include="'views/partials/me.challenge.preview'"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

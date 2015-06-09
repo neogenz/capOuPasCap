@@ -1,0 +1,28 @@
+<div class="centered panel panel-default without-margin">
+    <div class="panel-heading">
+        <h3 class="color-white">Commentaires</h3>
+    </div>
+    <div class="panel-body scrollable" ng-style="$root.style.maxHeightModal">
+        <div ng-repeat="comment in comments | orderBy:'-createdAt' ">
+            <div class="col-sm-12">
+                <div ng-include="'views/partials/comment.details'"></div>
+            </div>
+        </div>
+    </div>
+    <div class="panel-footer">
+        <form role="form" name="commentForm" ng-submit="comment(commentForm.$valid)" novalidate>
+            <div class="form-group"
+                 ng-class="{ 'has-error' : commentForm.comment.$error.maxlength }">
+                <label for="comment">Commentaire</label>
+                <input id="comment" type="text" class="form-control" name="comment" ng-model="commentToAdd.text"
+                       ng-maxlength="140" required>
+                <!--<p ng-show="commentForm.comment.$invalid && !commentForm.comment.$pristine" class="help-block">Veuillez saisir un commentaire.</p>-->
+                <p ng-show="commentForm.comment.$error.maxlength" class="help-block">Contenu de maximum 140 caractères.</p>
+            </div>
+            <div class="form-group text-right">
+                <button type="submit" class="btn btn-primary" ng-disabled="commentForm.$invalid">Enregistrer</button>
+                <button class="btn btn-warning" ng-click="close()">Fermer</button>
+            </div>
+        </form>
+    </div>
+</div>

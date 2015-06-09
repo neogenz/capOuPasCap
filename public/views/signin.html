@@ -1,0 +1,25 @@
+<div class="col-md-6 col-md-offset-3">
+    <h1 class="h1-responsive"><span class="fa fa-sign-in small-right-separation"></span>Connexion</h1>
+    <!-- LOGIN FORM -->
+    <form role="form" ng-submit="signin(signinForm.$valid)" name="signinForm" novalidate>
+
+        <div class="form-group" ng-class="{ 'has-error' : signinForm.email.$invalid && !signinForm.email.$pristine }">
+            <label for="email">Email</label>
+            <input id="email" type="email" class="form-control" name="email" ng-model="email" required>
+            <p ng-show="signinForm.email.$invalid && !signinForm.email.$pristine" class="help-block">Veuillez saisir une adresse email valide.</p>
+        </div>
+        <div class="form-group" ng-class="{ 'has-error' : signinForm.password.$invalid && !signinForm.password.$pristine }">
+            <label for="password">Mot de passe</label>
+            <input id="password" type="password" class="form-control" name="password" ng-model="password" ng-minlength="6" required>
+            <p ng-show="signinForm.password.$error.minlength" class="help-block">Le mot de passe fait minimum 6 caractères.</p>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" ng-disabled="signinForm.$invalid">Se connecter</button>
+    </form>
+
+    <hr>
+
+    <p>Vous avez besoin d'un compte ? <a class="link-color-inverse" ui-sref="signup">S'inscrire</a></p>
+
+    <p>Ou aller à <a class="link-color-inverse" ui-sref="home">l'accueil</a>.</p>
+
+</div>
